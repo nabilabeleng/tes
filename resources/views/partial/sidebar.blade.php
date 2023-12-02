@@ -44,13 +44,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/register" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Register</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/table" class="nav-link">
+              <a href="/welcome" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Table</p>
               </a>
@@ -58,12 +52,37 @@
             <li class="nav-item">
               <a href="/data-tables" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Data Table</p>
+                <p>
+                  Data Table
+                </p>
               </a>
             </li>
+            @guest
+            <li class="nav-item bg-info">
+              <a href="/login" class="nav-link">
+                <p>
+                  Login
+                </p>
+              </a>
+            </li>
+            @endguest
+
+            @auth
+            <li class="nav-item bg-danger" >
+                 <a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                   Logout
+                   </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+                  </form>
+          </li>
+            @endauth
+
           </ul>
         </li>
-        
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

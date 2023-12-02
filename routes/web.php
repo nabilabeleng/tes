@@ -16,7 +16,7 @@ use App\Http\Controllers\CastController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'utama']);
 
 Route::get('/register', [AuthController::class, 'regis']);
 
@@ -48,3 +48,8 @@ Route::put('/cast/{cast_id}', [CastController::class, 'update']);
 
 // Delete
 Route::DELETE('/cast/{cast_id}', [CastController::class, 'destroy']);
+
+
+Route::resource('cast', CastController::class);
+Auth::routes();
+
